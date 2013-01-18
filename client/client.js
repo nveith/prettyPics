@@ -2,7 +2,10 @@ if (Meteor.isClient) {
 
     Meteor.startup(function () {
 
-        d3.selectAll('path').attr('fill', function () {
+	Meteor.call("resultsLoad", function(error, success){
+		if(success){
+		
+		d3.selectAll('path').attr('fill', function () {
 
             // Get the ID of the path we are currently working with
             // Our SVG uses the state abbreviation for the ID
@@ -25,9 +28,11 @@ if (Meteor.isClient) {
                 return 'red'
             } else {
                 return 'purple'
-            }
-
-        });
-
-    })
+	            }
+	
+	        });
+	        }
+	
+	    })
+	})
 }

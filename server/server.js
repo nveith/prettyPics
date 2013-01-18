@@ -30,15 +30,20 @@ Meteor.startup(function () {
     resultsData.remove({});
 
     //iterate through localsArrLoad to populate results
-    for (i = 0; i < localsArr.length; i++) {
-
-        var stateCode = localsArr[i].abbr;
-        var winner = candidateDecoder(localsArr[i].races.President[""].final);
-
-        resultsData.insert({
-            "stateCode": stateCode,
-            "winner": winner
-        });
-    }
-});
+    Meteor.methods({'resultsLoad' : function (){
+    		var success = false;
+    	   	for (i = 0; i < localsArr.length; i++) {
+    	   		success = false;
+		        var stateCode = localsArr[i].abbr;
+		        var winner = candidateDecoder(localsArr[i].races.President[""].final);
+		        resultsData.insert({
+		            "stateCode": stateCode,
+		            "winner": winner
+		        },function(error,result) {if(!error) {success = true;}
+		    		});
+		    	}
+		    return sucess;
+		    }
+	    })
+	});
 
