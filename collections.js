@@ -1,7 +1,7 @@
 var electionData = new Meteor.Collection('election');
 var resultsData = new Meteor.Collection('results');
 
-
+if(Meteor.isServer){
 electionData.allow({
     insert: function () {
         return true;
@@ -22,3 +22,4 @@ resultsData.allow({
         return true;
     }
 })
+}

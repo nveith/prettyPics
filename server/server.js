@@ -42,7 +42,7 @@ Meteor.startup(function () {
 		        },function(error,result) {if(!error) {success = true;}
 		    		});
 		    	}
-		    return sucess;
+		    return success;
 		    }
 	    })
 	});
