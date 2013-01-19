@@ -36,7 +36,6 @@ if (Meteor.isClient) {
 
                 return resultsData.find().count();
 
-            });
-        }
-    })
-}
+            }
+        });
+    }
